@@ -8,7 +8,8 @@ import json
 import requests
 import os
 
-TOKEN = "6089051653:AAGTFhli1tk7FWWSNBYXtV7PeHH6Ed2a2I0"
+
+TOKEN = os.getenv("BOTAPIKEY")
 application = ApplicationBuilder().token(TOKEN).build()
 url = "http://static.cricinfo.com/rss/livescores.xml"
 op = urlopen(url)
