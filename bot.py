@@ -6,10 +6,9 @@ from telegram.ext import ApplicationBuilder,ContextTypes,CommandHandler
 import asyncio
 import json
 import requests
-import os
 
 
-TOKEN = os.getenv("BOTAPIKEY")
+TOKEN = "telegram-bot-token"
 application = ApplicationBuilder().token(TOKEN).build()
 url = "http://static.cricinfo.com/rss/livescores.xml"
 op = urlopen(url)
@@ -129,12 +128,9 @@ application.add_handler(start_handler)
 application.add_handler(match_handler)
 application.add_handler(event_handler)
 application.add_handler(stop_handler)
-''''
-PORT = int(os.environ.get('PORT', '443'))
-HOOK_URL = 'YOUR-CODECAPSULES-URL-HERE' + '/' + TOKEN
-application.run_webhook(listen='0.0.0.0', port=PORT, url_path=TOKEN, webhook_url=HOOK_URL)
-'''
+
 application.run_polling()
+
 async def main():
      while True:
          await asyncio.sleep(1)
